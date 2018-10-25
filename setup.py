@@ -7,7 +7,7 @@ setup(
     description='Easy access to the data of the KIT seatfinder. '
                 'This project is not affiliated in any way with the original author of https://www.seatfinder.de/',
     packages=['seatfinder'],
-    dependencies=['requests', 'pandas'],
+    install_requires=['requests', 'pandas'],
     tests_require=['nose'],
     test_suite='nose.collector',
 )
