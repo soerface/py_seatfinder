@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from typing import Union, TYPE_CHECKING, Optional
+from typing import Union, TYPE_CHECKING
 import requests
 import pandas as pd
 
