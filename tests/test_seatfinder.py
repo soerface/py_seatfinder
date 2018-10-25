@@ -13,4 +13,4 @@ class TestSeatfinder(unittest.TestCase):
         assert (Path.home() / '.seatfinder/data').exists()
         # from pprint import pprint
         # pprint(seatfinder.locations)
-        seatfinder.locations
+        # seatfinder.locations
