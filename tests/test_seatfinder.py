@@ -11,3 +11,6 @@ class TestSeatfinder(unittest.TestCase):
 
         seatfinder = Seatfinder('Kassel')
         assert (Path.home() / '.seatfinder/data').exists()
+        # from pprint import pprint
+        # pprint(seatfinder.locations)
+        seatfinder.locations

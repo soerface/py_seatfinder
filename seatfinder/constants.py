@@ -1,11 +1,11 @@
 from pathlib import Path
 
-BASE_URL = {
-    'Karlsruhe': 'https://seatfinder.bibliothek.kit.edu/karlsruhe/',
-    'Geneva': 'https://seatfinder.bibliothek.kit.edu/unige/',
-    'Kassel': 'https://seatfinder.bibliothek.kit.edu/kassel/',
-    'St. Gallen': 'https://seatfinder.bibliothek.kit.edu/unisg_v2/',
-    'Tuebingen': 'https://seatfinder.bibliothek.kit.edu/tuebingen/',
+SCRIPT_URL = {
+    'Karlsruhe': 'https://seatfinder.bibliothek.kit.edu/karlsruhe/getdata.php',
+    'Geneva': 'https://seatfinder.bibliothek.kit.edu/unige/getdata.php',
+    'Kassel': 'https://seatfinder.bibliothek.kit.edu/kassel/getdata.php',
+    'St. Gallen': 'https://seatfinder.bibliothek.kit.edu/unisg_v2/getdata.php',
+    'Tuebingen': 'https://seatfinder.bibliothek.kit.edu/tuebingen/getdata.php',
 }
 
 LOCATIONS = {

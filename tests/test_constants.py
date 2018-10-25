@@ -1,15 +1,15 @@
 import logging
 import unittest
-from seatfinder.constants import BASE_URL, LOCATIONS
-from urllib import request
+from seatfinder.constants import SCRIPT_URL, LOCATIONS
+import requests
 
 
 class TestConstants(unittest.TestCase):
 
     def test_base_url(self):
-        for k, v in BASE_URL.items():
+        for k, v in SCRIPT_URL.items():
             logging.info(f'Testing BASE_URL of {k} ({v})')
-            request.urlopen(v)
+            self.assertEqual(200, requests.get(v).status_code)
 
     def test_consistent_organizations(self):
-        self.assertEqual(BASE_URL.keys(), LOCATIONS.keys())
+        self.assertEqual(SCRIPT_URL.keys(), LOCATIONS.keys())
