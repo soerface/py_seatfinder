@@ -20,6 +20,7 @@ class DataContainer(MutableMapping):
 
     def __delitem__(self, key: Hashable) -> None:
         del self._storage[key]
+        (self.path / f'{key}.json').unlink()
 
     def __getitem__(self, key: Hashable) -> Any:
         if key in self._storage:

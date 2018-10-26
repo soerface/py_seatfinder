@@ -1,2 +1,3 @@
 *.py[co]
 data/
+*.coverage
