@@ -8,6 +8,6 @@ setup(
                 'This project is not affiliated in any way with the original author of https://www.seatfinder.de/',
     packages=['seatfinder'],
     install_requires=['requests', 'pandas'],
-    tests_require=['nose'],
+    tests_require=['nose', 'coverage'],
     test_suite='nose.collector',
 )

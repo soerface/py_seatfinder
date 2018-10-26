@@ -11,7 +11,7 @@ from seatfinder.timeseries_loader import TimeseriesLoader
 class Seatfinder:
 
     def __init__(self, organization, data_dir=DATA_DIR):
-        data_dir = Path(data_dir)
+
         if organization not in SCRIPT_URL:
             valid_organizations = ', '.join(SCRIPT_URL.keys())
             raise ValueError(
@@ -22,6 +22,7 @@ class Seatfinder:
         self._script_url = SCRIPT_URL[organization]
 
         if data_dir:
+            data_dir = Path(data_dir)
             if not data_dir.exists():
                 data_dir.mkdir(parents=True)
             self._data = DataContainer(path=data_dir / organization)

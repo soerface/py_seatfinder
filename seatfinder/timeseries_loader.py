@@ -58,6 +58,6 @@ class TimeseriesLoader:
                 'before': before,
             }).json()
             if datetime.strptime(after, '%Y-%m-%d') < datetime.now():
-                # Never safe the current day or the future, since the response will still change
+                # Never save the current day or the future, since the response will still change
                 self._seatfinder._data[key] = response
         return response[0][self._value]
