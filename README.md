@@ -7,7 +7,7 @@ Caches data in the background, nothing will be downloaded twice.
 
     pip install seatfinder
 
-## Usage:
+## Usage
 
     from seatfinder import Seatfinder
     seatfinder = Seatfinder('Kassel') # optional parameter data_dir. Default ~/.seatfinder/data
