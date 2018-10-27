@@ -1,6 +1,6 @@
 import unittest
 from pathlib import Path
-
+from datetime import datetime, timedelta
 from seatfinder import Seatfinder
 
 
@@ -46,3 +46,15 @@ class TestTimeseriesLoader(unittest.TestCase):
         result = self.seatfinder.manual_count['2018-09-20':'2018-10-20']['LeoEG']
         self.assertEqual(expected1, result[0])
         self.assertEqual(expected2, result[-1])
+
+    def test_no_save_today_and_future(self):
+        data_dir = Path('./seatfinder_data/')
+        yesterday = (datetime.now() + timedelta(days=-1)).strftime('%Y-%m-%d')
+        today = datetime.now().strftime('%Y-%m-%d')
+        tomorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
+        self.seatfinder.seat_estimate[yesterday:tomorrow]
+        self.assertTrue((data_dir / 'Kassel' / f'seatestimate_{yesterday}.json').exists())
+        self.assertFalse((data_dir / 'Kassel' / f'seatestimate_{today}.json').exists())
+        self.assertFalse((data_dir / 'Kassel' / f'seatestimate_{tomorrow}.json').exists())
+
+        del self.seatfinder.seat_estimate[yesterday]

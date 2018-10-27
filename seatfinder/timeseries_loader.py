@@ -1,7 +1,8 @@
 from datetime import datetime, timedelta
 from typing import Union, TYPE_CHECKING
 import requests
-import pandas as pd
+
+from seatfinder.timeseries_container import TimeseriesContainer
 
 if TYPE_CHECKING:
     from seatfinder import Seatfinder
@@ -27,11 +28,11 @@ class TimeseriesLoader:
         if type(start) != datetime:
             start = datetime.strptime(start, '%Y-%m-%d')
         if not stop:
-            return self._request(start)
+            return TimeseriesContainer(self._request(start))
         if type(stop) != datetime:
             stop = datetime.strptime(stop, '%Y-%m-%d')
         date = start
-        result = {}
+        result = TimeseriesContainer()
         while date < stop:
             response = self._request(date)
             for k, v in response.items():
@@ -41,6 +42,9 @@ class TimeseriesLoader:
                     result[k].extend(v)
             date += timedelta(days=step or 1)
         return result
+
+    def __delitem__(self, key):
+        del self._seatfinder._data[f'{self._value}_{key}']
 
     def _request(self, date: datetime):
         after = date.strftime('%Y-%m-%d')
@@ -57,7 +61,7 @@ class TimeseriesLoader:
                 'after': after,
                 'before': before,
             }).json()
-            if datetime.strptime(after, '%Y-%m-%d') < datetime.now():
+            if datetime.strptime(after, '%Y-%m-%d') < datetime.now() - timedelta(days=1):
                 # Never save the current day or the future, since the response will still change
                 self._seatfinder._data[key] = response
         return response[0][self._value]
