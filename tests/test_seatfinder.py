@@ -8,7 +8,7 @@ import shutil
 class TestSeatfinder(unittest.TestCase):
 
     def setUp(self):
-        self.seatfinder_ks = Seatfinder('Kassel', '/tmp/seatfinder_test')
+        self.seatfinder_ks = Seatfinder('Kassel', './seatfinder_data/')
 
     def test_init(self):
         with self.assertRaises(ValueError):

@@ -8,12 +8,13 @@ from seatfinder.data_container import DataContainer
 class TestDataContainer(unittest.TestCase):
 
     def setUp(self):
-        self.path = Path('/tmp/seatfinder_data_container_test')
+        self.path = Path('./seatfinder_data/')
         self.data = DataContainer(self.path)
 
     def test_setitem(self):
         self.data['lel'] = 42
         self.assertTrue((self.path / 'lel.json').exists())
+        del self.data['lel']
 
     def test_getitem(self):
         test_object = {'some': 52, 'data': 99}
@@ -21,6 +22,7 @@ class TestDataContainer(unittest.TestCase):
             json.dump(test_object, f)
 
         self.assertEqual(test_object, self.data['getitem_test'])
+        (self.path / 'getitem_test.json').unlink()
 
     def test_delitem(self):
         self.data['top'] = 42
@@ -39,3 +41,4 @@ class TestDataContainer(unittest.TestCase):
 
         self.assertIn('contains_test', self.data)
         self.assertNotIn('no_such_contains_test', self.data)
+        (self.path / 'contains_test.json').unlink()

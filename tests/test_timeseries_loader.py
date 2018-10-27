@@ -7,8 +7,7 @@ from seatfinder import Seatfinder
 class TestTimeseriesLoader(unittest.TestCase):
 
     def setUp(self):
-        data_dir = Path('/tmp/seatfinder_timeseries_loader')
-        self.seatfinder = Seatfinder('Kassel', data_dir=data_dir)
+        self.seatfinder = Seatfinder('Kassel', data_dir='./seatfinder_data/')
 
     def test_single_date(self):
         expected = {
