@@ -7,7 +7,7 @@ import pandas as pd
 class TestTimeseriesContainer(unittest.TestCase):
 
     def setUp(self):
-        with open('./seatfinder_data/Kassel/seatestimate_2018-10-25.json') as f:
+        with open('./tests/seatfinder_data/Kassel/seatestimate_2018-10-25.json') as f:
             data = json.load(f)[0]['seatestimate']
         self.container = TimeseriesContainer(data)
 

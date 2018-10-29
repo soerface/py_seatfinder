@@ -7,7 +7,7 @@ from seatfinder import Seatfinder
 class TestTimeseriesLoader(unittest.TestCase):
 
     def setUp(self):
-        self.seatfinder = Seatfinder('Kassel', data_dir='./seatfinder_data/')
+        self.seatfinder = Seatfinder('Kassel', data_dir='./tests/seatfinder_data/')
 
     def test_single_date(self):
         expected = {
@@ -48,7 +48,7 @@ class TestTimeseriesLoader(unittest.TestCase):
         self.assertEqual(expected2, result[-1])
 
     def test_no_save_today_and_future(self):
-        data_dir = Path('./seatfinder_data/')
+        data_dir = Path('./tests/seatfinder_data/')
         yesterday = (datetime.now() + timedelta(days=-1)).strftime('%Y-%m-%d')
         today = datetime.now().strftime('%Y-%m-%d')
         tomorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')

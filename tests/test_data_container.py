@@ -8,7 +8,7 @@ from seatfinder.data_container import DataContainer
 class TestDataContainer(unittest.TestCase):
 
     def setUp(self):
-        self.path = Path('./seatfinder_data/')
+        self.path = Path('./tests/seatfinder_data/')
         self.data = DataContainer(self.path)
 
     def test_setitem(self):

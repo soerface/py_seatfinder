@@ -8,9 +8,9 @@ if __name__ == '__main__':
 
     seat_estimate = seatfinder.seat_estimate['2018-09-29']
     print(seat_estimate['LeoEG'])
-    manual_count = seatfinder.manual_count['2018-09-01':'2018-10-30']
+    manual_count = seatfinder.manual_count['2018-09-01':'2018-09-30']
 
-    df = seatfinder.seat_estimate['2018-09-01':'2018-10-28'].to_dataframe()
+    df = seatfinder.seat_estimate['2018-09-01':'2018-10-26'].to_dataframe()
     df.loc['LeoEG']['occupied_seats'].plot()
     plt.show()
     plt.clf()
